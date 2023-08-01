@@ -21,6 +21,7 @@ qt_add_qml_module(appPainterTest
         PanelView.qml
         CSDrawer.qml
         CSToolButton.qml
+        LazyMain.qml
 )
 
 qt_add_resources(appPainterTest

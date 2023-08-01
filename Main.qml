@@ -104,6 +104,41 @@ Window {
                 }
             }
         }
+
+        Rectangle {
+            anchors.fill: parent
+            anchors.margins: 10
+            color: "lightblue"
+
+            Label {
+                anchors.centerIn: parent
+                text: "HALLO"
+            }
+
+            Canvas {
+                property int radius: slider.value
+
+                anchors.fill: parent
+                anchors.margins: 10
+                contextType: "2d"
+
+                onRadiusChanged: requestPaint()
+
+                onPaint: {
+                    //context.fillStyle = Qt.rgba(1, 0, 0, 1)
+                    context.clearRect(0, 0, width, height)
+
+                    context.beginPath()
+                    context.lineWidth = 2
+                    context.moveTo(2 * radius, radius)
+                    context.lineTo(width - 2 * radius, radius)
+                    context.arcTo(width - radius, radius, width - radius, 2 * radius, radius)
+                    context.lineTo(width - radius, height - (50 + radius))
+                    context.arcTo(width - radius, height - 50, width - 2 * radius, height - 50, radius)
+                    context.fill()
+                }
+            }
+        }
     }
 
     Rectangle {
@@ -183,7 +218,6 @@ Window {
     }
 
     PanelView {
-        visible: false
         anchors.centerIn: parent
         width: 400
         height: 300
@@ -226,41 +260,5 @@ Window {
         from: 1
         to: 20
         value: 5
-    }
-
-    Rectangle {
-        anchors.fill: parent
-        anchors.margins: 10
-        color: "lightblue"
-        z: -1
-
-        Label {
-            anchors.centerIn: parent
-            text: "HALLO"
-        }
-
-        Canvas {
-            property int radius: slider.value
-
-            anchors.fill: parent
-            anchors.margins: 10
-            contextType: "2d"
-
-            onRadiusChanged: requestPaint()
-
-            onPaint: {
-                //context.fillStyle = Qt.rgba(1, 0, 0, 1)
-                context.clearRect(0, 0, width, height)
-
-                context.beginPath()
-                context.lineWidth = 2
-                context.moveTo(2 * radius, radius)
-                context.lineTo(width - 2 * radius, radius)
-                context.arcTo(width - radius, radius, width - radius, 2 * radius, radius)
-                context.lineTo(width - radius, height - (50 + radius))
-                context.arcTo(width - radius, height - 50, width - 2 * radius, height - 50, radius)
-                context.fill()
-            }
-        }
     }
 }

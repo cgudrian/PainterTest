@@ -4,6 +4,12 @@ import QtQuick.Layouts
 import QtQuick.VirtualKeyboard
 
 Item {
+    PanelView {
+        anchors.centerIn: parent
+        width: 400
+        height: 300
+    }
+
     Rectangle {
         id: topDrawer
 
@@ -74,28 +80,14 @@ Item {
             color: "white"
         }
 
-        GridLayout {
-            columnSpacing: 5
-            rowSpacing: 5
-            rows: 1
-
-            anchors.horizontalCenter: parent.horizontalCenter
+        AccessoryView {
             anchors.top: divider.bottom
-            anchors.topMargin: 5
-
-            Repeater {
-                model: 26
-
-                Rectangle {
-                    width: 70
-                    height: 100
-                    radius: 8
-                    color: "white"
-                }
-            }
+            anchors.bottom: parent.bottom
+            anchors.margins: 10
         }
 
         Rectangle {
+            visible: false
             anchors.fill: parent
             anchors.margins: 10
             color: "lightblue"
@@ -179,6 +171,7 @@ Item {
                         parent.y = 89
                     }
                 }
+                console.log(parent.y)
             }
 
             onPressed: {
@@ -190,7 +183,7 @@ Item {
                             if (speedY < -5) {
                                 parent.y = 5
                             }
-                            if (parent.y > 40 && parent.y < 89){
+                            if (Math.abs(parent.y - 89) < 50){
                                 parent.y = 89
                             }
                             if (parent.y < 40) {
@@ -204,14 +197,6 @@ Item {
                                    lastY = mouse.y
                                }
         }
-    }
-
-    PanelView {
-        anchors.centerIn: parent
-        width: 400
-        height: 300
-        x: 10
-        y: 10
     }
 
     InputPanel {

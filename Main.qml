@@ -1,13 +1,10 @@
 import QtQuick
 import QtQuick.Window
-import QtQuick.VirtualKeyboard
 import QtQuick.Controls
 import QtQuick.Layouts
-import QtQuick.Shapes
 
 Window {
     id: window
-
     width: 1280
     height: 800
     visible: true
@@ -21,6 +18,7 @@ Window {
 
     Loader {
         id: main
+        //active: false
         anchors.fill: parent
         asynchronous: true
         sourceComponent: LazyMain {}

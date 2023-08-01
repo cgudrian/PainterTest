@@ -22,6 +22,7 @@ qt_add_qml_module(appPainterTest
         CSDrawer.qml
         CSToolButton.qml
         LazyMain.qml
+        AccessoryView.qml
 )
 
 qt_add_resources(appPainterTest

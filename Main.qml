@@ -261,4 +261,10 @@ Window {
         to: 20
         value: 5
     }
+
+    Drawer {
+        edge: Qt.BottomEdge
+        width: parent.width
+        height: 0.66 * parent.height
+    }
 }

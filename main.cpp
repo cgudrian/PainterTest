@@ -3,9 +3,19 @@
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
 
+#include <optional>
+
+std::optional<int> machwas(int val)
+{
+    return val;
+}
+
 int main(int argc, char *argv[])
 {
     qputenv("QT_IM_MODULE", QByteArray("qtvirtualkeyboard"));
+    qputenv("QT_VIRTUALKEYBOARD_STYLE", QByteArray("csdefault"));
+
+    machwas(32);
 
     QGuiApplication app(argc, argv);
     QFontDatabase::addApplicationFont(":/NotoSans-Regular.ttf");

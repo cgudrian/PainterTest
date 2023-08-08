@@ -15,7 +15,6 @@ GridView {
 
     cellWidth: Math.floor(parent.width / numColumns)
     cellHeight: 110
-    snapMode: GridView.SnapToRow
 
     clip: true
 

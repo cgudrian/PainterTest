@@ -5,9 +5,12 @@
 
 #include <optional>
 
-std::optional<int> machwas(int val)
+#include <signal.h>
+
+void handleSignal(int signal)
 {
-    return val;
+    qCritical() << "Quitting on signal" << signal;
+    qApp->quit();
 }
 
 int main(int argc, char *argv[])
@@ -15,10 +18,12 @@ int main(int argc, char *argv[])
     qputenv("QT_IM_MODULE", QByteArray("qtvirtualkeyboard"));
     qputenv("QT_VIRTUALKEYBOARD_STYLE", QByteArray("csdefault"));
 
-    machwas(32);
-
     QGuiApplication app(argc, argv);
     QFontDatabase::addApplicationFont(":/NotoSans-Regular.ttf");
+
+    signal(SIGTERM, &handleSignal);
+    signal(SIGINT, &handleSignal);
+    signal(SIGBREAK, &handleSignal);
 
     QQmlApplicationEngine engine;
 

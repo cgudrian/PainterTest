@@ -11,6 +11,14 @@ Window {
     title: qsTr("Hello World")
     color: "#e6e6e6"
 
+    Connections {
+        target: Qt.application
+
+        function onAboutToQuit() {
+            main.active = false
+        }
+    }
+
     BusyIndicator {
         anchors.centerIn: parent
         running: main.status !== Loader.Ready

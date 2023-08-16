@@ -5,6 +5,8 @@ import QtQuick.Controls
 import PainterTest
 
 Rectangle {
+    id: root
+
     property bool dragging: false
     property point originStart
     property point mouseStart
@@ -18,7 +20,16 @@ Rectangle {
         anchors.fill: parent
     }
 
+    PinchArea {
+        anchors.fill: parent
+
+        onPinchStarted: root.color = "red"
+        onPinchFinished: root.color = "white"
+    }
+
     MouseArea {
+        scrollGestureEnabled: false
+
         anchors.fill: parent
 
         onPositionChanged: (mouse) => {

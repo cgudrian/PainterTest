@@ -6,8 +6,8 @@ import QtQuick.VirtualKeyboard
 Item {
     PanelView {
         anchors.centerIn: parent
-        width: 400
-        height: 300
+        width: 800
+        height: 600
     }
 
     Rectangle {
@@ -85,42 +85,6 @@ Item {
             anchors.bottom: parent.bottom
             anchors.margins: 10
         }
-
-        Rectangle {
-            visible: false
-            anchors.fill: parent
-            anchors.margins: 10
-            color: "lightblue"
-
-            Label {
-                anchors.centerIn: parent
-                text: "HALLO"
-            }
-
-            Canvas {
-                property int radius: slider.value
-
-                anchors.fill: parent
-                anchors.margins: 10
-                contextType: "2d"
-
-                onRadiusChanged: requestPaint()
-
-                onPaint: {
-                    //context.fillStyle = Qt.rgba(1, 0, 0, 1)
-                    context.clearRect(0, 0, width, height)
-
-                    context.beginPath()
-                    context.lineWidth = 2
-                    context.moveTo(2 * radius, radius)
-                    context.lineTo(width - 2 * radius, radius)
-                    context.arcTo(width - radius, radius, width - radius, 2 * radius, radius)
-                    context.lineTo(width - radius, height - (50 + radius))
-                    context.arcTo(width - radius, height - 50, width - 2 * radius, height - 50, radius)
-                    context.fill()
-                }
-            }
-        }
     }
 
     Rectangle {
@@ -155,6 +119,8 @@ Item {
             property int lastY: 0
 
             anchors.fill: parent
+            anchors.topMargin: -10
+            anchors.bottomMargin: -10
 
             drag.target: parent
             drag.axis: Drag.YAxis
@@ -227,18 +193,5 @@ Item {
                 }
             }
         }
-    }
-
-    Slider {
-        id: slider
-        from: 1
-        to: 20
-        value: 5
-    }
-
-    Drawer {
-        edge: Qt.BottomEdge
-        width: parent.width
-        height: 0.66 * parent.height
     }
 }

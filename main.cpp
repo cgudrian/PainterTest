@@ -23,7 +23,6 @@ int main(int argc, char *argv[])
 
     signal(SIGTERM, &handleSignal);
     signal(SIGINT, &handleSignal);
-    signal(SIGBREAK, &handleSignal);
 
     QQmlApplicationEngine engine;
 

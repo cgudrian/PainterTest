@@ -44,10 +44,15 @@ void ControlPanel::paint(QPainter *painter)
 
 void ControlPanel::zoomByFactor(const QPointF &viewCenter, const qreal &factor)
 {
+    setZoom(viewCenter, _zoom * factor);
+}
+
+void ControlPanel::setZoom(const QPointF &viewCenter, const qreal &zoom)
+{
     // we want to keep this point fixed in the viewport
     auto modelCenter = viewCenter * _worldTransform.inverted();
 
-    _zoom *= factor;
+    _zoom = zoom;
     _origin = {viewCenter.x() - modelCenter.x() * _zoom, viewCenter.y() - modelCenter.y() * _zoom};
 
     updateWorldTransform();

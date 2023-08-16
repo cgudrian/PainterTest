@@ -27,6 +27,7 @@ public:
     void setFoobar(bool enable);
 
     Q_INVOKABLE void zoomByFactor(const QPointF &viewCenter, const qreal &factor);
+    Q_INVOKABLE void setZoom(const QPointF &viewCenter, const qreal &zoom);
 
 private:
     QPointF _origin{0, 0};

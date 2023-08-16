@@ -21,10 +21,15 @@ Rectangle {
     }
 
     PinchArea {
+        property real startZoom: 0
+
         anchors.fill: parent
 
-        onPinchStarted: root.color = "red"
-        onPinchFinished: root.color = "white"
+        onPinchStarted: startZoom = panel.zoom
+
+        onPinchUpdated: (event) => {
+                            panel.setZoom(event.startCenter, startZoom * event.scale)
+                        }
     }
 
     MouseArea {

@@ -25,7 +25,12 @@ Rectangle {
 
         anchors.fill: parent
 
-        onPinchStarted: startZoom = panel.zoom
+        onPinchStarted: {
+            startZoom = panel.zoom
+            console.log("pinchStarted")
+        }
+
+        onPinchFinished: console.log("pinchFinished")
 
         onPinchUpdated: (event) => {
                             panel.setZoom(event.startCenter, startZoom * event.scale)
@@ -65,6 +70,8 @@ Rectangle {
     }
 
     Rectangle {
+        visible: false
+
         anchors.fill: parent
 
         MultiPointTouchArea {

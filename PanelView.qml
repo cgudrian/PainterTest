@@ -94,21 +94,21 @@ Rectangle {
 
         Rectangle {
             width: 30; height: 30
-            color: "yellow"
+            color: "blue"
             x: point3.x
             y: point3.y
         }
 
         Rectangle {
             width: 30; height: 30
-            color: "yellow"
+            color: "magenta"
             x: point4.x
             y: point4.y
         }
 
         Rectangle {
             width: 30; height: 30
-            color: "yellow"
+            color: "red"
             x: point5.x
             y: point5.y
         }

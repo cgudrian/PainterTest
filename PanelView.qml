@@ -63,4 +63,54 @@ Rectangle {
                      panel.zoomByFactor(Qt.point(wheel.x, wheel.y), 2 ** (wheel.angleDelta.y / 240))
                  }
     }
+
+    Rectangle {
+        anchors.fill: parent
+
+        MultiPointTouchArea {
+            anchors.fill: parent
+            touchPoints: [
+                TouchPoint { id: point1 },
+                TouchPoint { id: point2 },
+                TouchPoint { id: point3 },
+                TouchPoint { id: point4 },
+                TouchPoint { id: point5 }
+            ]
+        }
+
+        Rectangle {
+            width: 30; height: 30
+            color: "green"
+            x: point1.x
+            y: point1.y
+        }
+
+        Rectangle {
+            width: 30; height: 30
+            color: "yellow"
+            x: point2.x
+            y: point2.y
+        }
+
+        Rectangle {
+            width: 30; height: 30
+            color: "yellow"
+            x: point3.x
+            y: point3.y
+        }
+
+        Rectangle {
+            width: 30; height: 30
+            color: "yellow"
+            x: point4.x
+            y: point4.y
+        }
+
+        Rectangle {
+            width: 30; height: 30
+            color: "yellow"
+            x: point5.x
+            y: point5.y
+        }
+    }
 }

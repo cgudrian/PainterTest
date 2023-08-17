@@ -38,6 +38,8 @@ Rectangle {
     }
 
     MouseArea {
+        visible: false
+
         scrollGestureEnabled: false
 
         anchors.fill: parent

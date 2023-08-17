@@ -20,26 +20,7 @@ Rectangle {
         anchors.fill: parent
     }
 
-    PinchArea {
-        property real startZoom: 0
-
-        anchors.fill: parent
-
-        onPinchStarted: {
-            startZoom = panel.zoom
-            console.log("pinchStarted")
-        }
-
-        onPinchFinished: console.log("pinchFinished")
-
-        onPinchUpdated: (event) => {
-                            panel.setZoom(event.startCenter, startZoom * event.scale)
-                        }
-    }
-
     MouseArea {
-        visible: false
-
         scrollGestureEnabled: false
 
         anchors.fill: parent
@@ -69,6 +50,23 @@ Rectangle {
         onWheel: (wheel) => {
                      panel.zoomByFactor(Qt.point(wheel.x, wheel.y), 2 ** (wheel.angleDelta.y / 240))
                  }
+    }
+
+    PinchArea {
+        property real startZoom: 0
+
+        anchors.fill: parent
+
+        onPinchStarted: {
+            startZoom = panel.zoom
+            console.log("pinchStarted")
+        }
+
+        onPinchFinished: console.log("pinchFinished")
+
+        onPinchUpdated: (event) => {
+                            panel.setZoom(event.center, startZoom * event.scale)
+                        }
     }
 
     Rectangle {
